@@ -15,44 +15,35 @@ class SwiftRobotControlCenter: RobotControlCenter {
         levelName = "L55H" //  Level name
         super.viewDidLoad()
     }
-    
-    var n = 8
-    var candy = 0
-    var candyInAString = 1
-    var numberString = 1
-    
+     
     override func run() {
         
-        turnRight()
-        candy = n
-        for _ in 0..<n {
-            piramidBild()
-            nextLineback()
-            n = n - 1
-            if numberString == 7 {
-                countCandyInString(string: numberString)
-            }
-            numberString = numberString + 1
-            candyInAString = candyInAString + 1
-        }
-
+        buildPiramide()
+        
     } //end Run
     
     // start block functions
     
-    func countCandyInString (string: Int)
-    {
+    func buildPiramide() {
         
-        print ("in string \(numberString) have a \(candyInAString) candys")
-    }
-    
-    func piramidBild () {
-        move()
+          var n = 8
+          var candyInAString = 1
+          var numberString = 1
+        
+        turnRight()
         for _ in 0..<n {
-            put()
             move()
+            for _ in 0..<n {
+                put()
+                move()
+            }
+            nextLineback()
+            n = n - 1
+            numberString = numberString + 1
+            candyInAString = candyInAString + 1
         }
     }
+    
     
     func nextLineback() {
         if facingDown {
@@ -78,5 +69,3 @@ class SwiftRobotControlCenter: RobotControlCenter {
     
 } // End controller
  
-// test commit git hub )))
-
